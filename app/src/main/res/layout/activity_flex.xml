@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     tools:context="com.istarindia.tfylanguage.FlexActivity">
 
 
@@ -17,8 +18,8 @@
         android:layout_above="@+id/bottomflex"
         android:id="@+id/topflexlayout"
         app:flexWrap="wrap"
-        app:alignItems="baseline"
-        app:alignContent="flex_start" >
+        app:alignItems="center"
+        app:alignContent="center" >
 
         </com.google.android.flexbox.FlexboxLayout>
 
@@ -41,6 +42,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/shuttle"/>
+        android:id="@+id/shuttle"
+        android:visibility="gone"/>
 
 </RelativeLayout>

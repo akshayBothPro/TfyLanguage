@@ -1,13 +1,16 @@
 package com.istarindia.tfylanguage;
 
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.google.android.flexbox.FlexboxLayout;
 
@@ -19,8 +22,8 @@ public class FlexActivity extends AppCompatActivity {
     final ViewGroup.LayoutParams vv = new ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT);
-
-    int position =0;
+    RelativeLayout main;
+    int position =1;
     int lastposition =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class FlexActivity extends AppCompatActivity {
         topflexlayout = (FlexboxLayout) findViewById(R.id.topflexlayout);
         bottomflex = (FlexboxLayout) findViewById(R.id.bottomflex);
         shuttle = (Button) findViewById(R.id.shuttle);
+        main = (RelativeLayout) findViewById(R.id.main);
         ArrayList<String> arrayList = new ArrayList<>();
         for(int i=0;i<10;i++){
             arrayList.add(i+"");
@@ -49,20 +53,47 @@ public class FlexActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                if(button.getText() != null && !button.getText().toString().equalsIgnoreCase("")) {
-               int tag_position = (int) v.getTag();
+               final int tag_position = (int) v.getTag();
                 Point p = getLocationOnScreen(v);
-                if(topflexlayout.getChildAt(lastposition) != null){
-                    Button b = (Button) topflexlayout.getChildAt(lastposition);
-                    float x = b.getX()+b.getWidth();
-                    float y = b.getY() + b.getHeight();
-                    StartYourAnimation(p.x,x,p.y,y,((Button)v).getText().toString(),tag_position);
+                   Rect myViewRect = new Rect();
+                   v.getGlobalVisibleRect(myViewRect);
 
-                }else{
-                    StartYourAnimation(p.x,0,p.y,0,((Button)v).getText().toString(),tag_position);
-                }
-                   ((Button)v).setText("");
+
+                   final Button topbutton = (Button)  LayoutInflater.from(FlexActivity.this).inflate(R.layout.buttons, null, false);
+
+                   topbutton.setText(((Button)v).getText());
+                   topbutton.setLayoutParams(vv);
+                   topbutton.setTag(v.getTag());
+                   setTopClick(topbutton);
+                   topflexlayout.addView(topbutton);
+
+                    topbutton.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            int[] viewLocation = new int[2];
+                            v.getLocationInWindow(viewLocation);
+                            int[] rootLocation = new int[2];
+                            main.getLocationInWindow(rootLocation);
+                            float fx = viewLocation[0] - rootLocation[0];
+                            float fy  = viewLocation[1] - rootLocation[1];
+
+                            if(topflexlayout.getChildAt(lastposition) != null){
+                                Button b = (Button) topflexlayout.getChildAt(lastposition);
+                                float x = b.getX()+b.getWidth();
+                                float y = b.getY() + b.getHeight();
+                                StartYourAnimation(fx,x,fy,y,((Button)v).getText().toString(),tag_position,topbutton);
+
+                            }else{
+                                StartYourAnimation(fx,0,fy,0,((Button)v).getText().toString(),tag_position,topbutton);
+                            }
+                            ((Button)v).setText("");
+
+                        }
+                    });
+
+
 
                }
             }
@@ -78,9 +109,25 @@ public class FlexActivity extends AppCompatActivity {
                 System.out.println("top click tag position---> "+tag_position);
                 Point p = getLocationOnScreen(v);
                 Button b = (Button) bottomflex.getChildAt(tag_position);
-                Point pp = getLocationOnScreen(b);
-                pp.y = pp.y -b.getHeight();
-                topAnimation(p.x,pp.x,p.y,pp.y,b,v,((Button)v).getText().toString());
+
+                int [] topButton = new int[2];
+                v.getLocationInWindow(topButton);
+                int[] viewLocation = new int[2];
+                b.getLocationInWindow(viewLocation);
+                int[] rootLocation = new int[2];
+                main.getLocationInWindow(rootLocation);
+                float fx = viewLocation[0] - rootLocation[0];
+                float fy  = viewLocation[1] - rootLocation[1];
+
+                float x =  topButton[0] - rootLocation[0];
+                float y = topButton[1] - rootLocation[1];
+
+
+
+
+
+
+                topAnimation(x,fx,y,fy,b,v,((Button)v).getText().toString());
 
 
             }
@@ -89,7 +136,7 @@ public class FlexActivity extends AppCompatActivity {
 
     }
 
-    public void StartYourAnimation(int fromX, float toX, int fromY, float toY, final String text,final int tag){
+    public void StartYourAnimation(float fromX, float toX, float fromY, float toY, final String text,final int tag,final Button topButton){
         final Animation animation = new TranslateAnimation(fromX,toX,fromY,toY);
         animation.setDuration(500);
         animation.setAnimationListener(new Animation.AnimationListener() {
@@ -103,13 +150,9 @@ public class FlexActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Button button = new Button(FlexActivity.this);
-                button.setText(text);
-                button.setLayoutParams(vv);
-                button.setTag(tag);
-                setTopClick(button);
-                topflexlayout.addView(button);
+
                 shuttle.setVisibility(View.GONE);
+                topButton.setVisibility(View.VISIBLE);
                 lastposition = position;
                 position++;
             }
@@ -126,7 +169,7 @@ public class FlexActivity extends AppCompatActivity {
 
 
 
-    public void topAnimation(int fromX, float toX, int fromY, float toY,  final Button button,final View v,final String text){
+    public void topAnimation(float fromX, float toX, float fromY, float toY,  final Button button,final View v,final String text){
         final Animation animation = new TranslateAnimation(fromX,toX,fromY,toY);
         animation.setDuration(500);
         animation.setAnimationListener(new Animation.AnimationListener() {
