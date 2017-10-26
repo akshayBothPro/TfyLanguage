@@ -23,7 +23,7 @@ public class FlexActivity extends AppCompatActivity {
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT);
     RelativeLayout main;
-    int position =1;
+    int position =0;
     int lastposition =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +81,14 @@ public class FlexActivity extends AppCompatActivity {
 
                             if(topflexlayout.getChildAt(lastposition) != null){
                                 Button b = (Button) topflexlayout.getChildAt(lastposition);
-                                float x = b.getX()+b.getWidth();
-                                float y = b.getY() + b.getHeight();
+                                int[] bLocation = new int[2];
+                                b.getLocationInWindow(bLocation);
+                                float x = bLocation[0] - rootLocation[0];
+                                float y  = bLocation[1] - rootLocation[1];
+
+
+                                //float x = b.getX()+b.getWidth();
+                                //float y = b.getY() + b.getHeight();
                                 StartYourAnimation(fx,x,fy,y,((Button)v).getText().toString(),tag_position,topbutton);
 
                             }else{
@@ -107,7 +113,6 @@ public class FlexActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int tag_position = (int) v.getTag();
                 System.out.println("top click tag position---> "+tag_position);
-                Point p = getLocationOnScreen(v);
                 Button b = (Button) bottomflex.getChildAt(tag_position);
 
                 int [] topButton = new int[2];
@@ -118,15 +123,8 @@ public class FlexActivity extends AppCompatActivity {
                 main.getLocationInWindow(rootLocation);
                 float fx = viewLocation[0] - rootLocation[0];
                 float fy  = viewLocation[1] - rootLocation[1];
-
                 float x =  topButton[0] - rootLocation[0];
                 float y = topButton[1] - rootLocation[1];
-
-
-
-
-
-
                 topAnimation(x,fx,y,fy,b,v,((Button)v).getText().toString());
 
 
@@ -153,8 +151,9 @@ public class FlexActivity extends AppCompatActivity {
 
                 shuttle.setVisibility(View.GONE);
                 topButton.setVisibility(View.VISIBLE);
-                lastposition = position;
                 position++;
+                lastposition = position;
+
             }
 
             @Override

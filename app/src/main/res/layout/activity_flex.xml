@@ -18,7 +18,7 @@
         android:layout_above="@+id/bottomflex"
         android:id="@+id/topflexlayout"
         app:flexWrap="wrap"
-        app:alignItems="center"
+        app:alignItems="flex_start"
         app:alignContent="center" >
 
         </com.google.android.flexbox.FlexboxLayout>
