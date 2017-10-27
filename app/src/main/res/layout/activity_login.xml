@@ -92,7 +92,7 @@
                 android:text="Username or Password incorrect."
                 android:textColor="@color/error_text"
                 android:textSize="@dimen/p3"
-                android:visibility="visible"
+                android:visibility="gone"
 
                 />
         </LinearLayout>
@@ -129,7 +129,7 @@
             layout="@layout/signup_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
+            android:visibility="gone"
 
             />
 
@@ -143,6 +143,7 @@
             android:textColor="@color/input_border"
             android:textAllCaps="false"
             android:textSize="@dimen/p3"
+            android:visibility="gone"
 
             />
     </LinearLayout>
