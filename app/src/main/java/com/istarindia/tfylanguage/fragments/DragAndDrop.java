@@ -17,6 +17,8 @@ import com.istarindia.tfylanguage.ViewPagerActivity;
 import com.istarindia.tfylanguage.pojo.AssessmentPojo;
 import com.istarindia.tfylanguage.util.FontUtil;
 
+import java.util.ArrayList;
+
 /**
  * Created by istarferoz on 27/10/17.
  */
@@ -26,13 +28,14 @@ public class DragAndDrop extends Fragment {
     private AssessmentPojo assessmentPojo;
     private Button checkButton,shuttle;
     FlexboxLayout topflexlayout,bottomflex;
-    final ViewGroup.LayoutParams vv = new ViewGroup.LayoutParams(
+    final RelativeLayout.LayoutParams vv = new RelativeLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT);
+
     RelativeLayout main;
     private TextView questionText;
     private FontUtil fontUtil;
-
+    private ArrayList<String> selectedOptions;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,7 +52,12 @@ public class DragAndDrop extends Fragment {
         checkButton.setTypeface(fontUtil.getTypeface("LatoRegular"));
         shuttle.setTypeface(fontUtil.getTypeface("LatoRegular"));
         shuttle.setTextSize(18);
+        shuttle.setTextColor(getContext().getResources().getColor(R.color.black_theme_text));
+        shuttle.setBackgroundColor(getContext().getResources().getColor(R.color.white));
+        vv.setMargins(10, 10, 10, 10);
+        shuttle.setLayoutParams(vv);
         int i =0;
+        selectedOptions = new ArrayList<>();
         questionText.setText(assessmentPojo.getQuestionPojo().getText());
         for(String options: assessmentPojo.getOptionPojo().getOptions()){
             Button button = new Button(getContext());
@@ -58,6 +66,8 @@ public class DragAndDrop extends Fragment {
             button.setLayoutParams(vv);
             button.setTypeface(fontUtil.getTypeface("LatoRegular"));
             button.setTextSize(18);
+            button.setTextColor(getContext().getResources().getColor(R.color.black_theme_text));
+            button.setBackgroundColor(getContext().getResources().getColor(R.color.white));
             setBottomClick(button);
             bottomflex.addView(button);
             i++;
@@ -67,7 +77,7 @@ public class DragAndDrop extends Fragment {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((ViewPagerActivity)getActivity()).next();
+                ((ViewPagerActivity)getActivity()).next(assessmentPojo,selectedOptions);
             }
         });
         return view;
@@ -78,8 +88,10 @@ public class DragAndDrop extends Fragment {
             @Override
             public void onClick(final View v) {
                 if(button.getText() != null && !button.getText().toString().equalsIgnoreCase("")) {
+                    button.setBackgroundColor(getContext().getResources().getColor(R.color.input_border));
                     final int tag_position = (int) v.getTag();
                     final String optionText = ((Button)v).getText().toString();
+                    selectedOptions.add(optionText);
                     ((Button) v).setText("");
                     final Button addButton = (Button)  LayoutInflater.from(getContext()).inflate(R.layout.buttons, null, false);
                     addButton.setText(optionText);
@@ -87,6 +99,8 @@ public class DragAndDrop extends Fragment {
                     addButton.setTag(v.getTag());
                     addButton.setTypeface(fontUtil.getTypeface("LatoRegular"));
                     addButton.setTextSize(18);
+                    addButton.setTextColor(getContext().getResources().getColor(R.color.black_theme_text));
+                    addButton.setBackgroundColor(getContext().getResources().getColor(R.color.white));
 
                     setTopClick(addButton);
                     topflexlayout.addView(addButton);
@@ -167,6 +181,7 @@ public class DragAndDrop extends Fragment {
             public void onAnimationEnd(Animation animation) {
                 b.setText(buttonText);
                 shuttle.setVisibility(View.GONE);
+                b.setBackgroundColor(getContext().getResources().getColor(R.color.white));
 
             }
 

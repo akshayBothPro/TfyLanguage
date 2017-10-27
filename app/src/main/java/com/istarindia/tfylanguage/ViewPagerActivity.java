@@ -1,8 +1,12 @@
 package com.istarindia.tfylanguage;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.istarindia.tfylanguage.pojo.AnswerPojo;
 import com.istarindia.tfylanguage.pojo.AssessmentPojo;
 import com.istarindia.tfylanguage.pojo.OptionPojo;
@@ -14,6 +18,8 @@ public class ViewPagerActivity extends AppCompatActivity {
     private LockableViewPager lockableViewPager;
     private ArrayList<AssessmentPojo> assessmentPojos;
     private ViewPagerAdapter viewPagerAdapter;
+    private MaterialDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +37,53 @@ public class ViewPagerActivity extends AppCompatActivity {
 
 
 
-    public void next(){
-        if(lockableViewPager.getCurrentItem() != assessmentPojos.size()+1){
-            lockableViewPager.setCurrentItem(lockableViewPager.getCurrentItem()+1);
+    public void next(AssessmentPojo assessmentPojo, ArrayList<String> selectedOptions){
+
+
+        if(dialog != null){
+            dialog = null;
+            if(lockableViewPager.getCurrentItem() != assessmentPojos.size()+1){
+                lockableViewPager.setCurrentItem(lockableViewPager.getCurrentItem()+1);
+            }
+        }else{
+            boolean flag = false;
+            ArrayList<String> answers =  assessmentPojo.getAnswerPojo().getAnswers();
+           if (selectedOptions.size() ==answers.size()){
+
+               for(String selectedoption: selectedOptions){
+                   if(answers.contains(selectedoption)){
+                       flag = true;
+                   }else{
+                       flag = false;
+                   }
+               }
+           }
+
+           if(flag){
+               dialog = new MaterialDialog.Builder(this)
+                       .customView(R.layout.right_answer_layout, false)
+                       .build();
+               dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+               dialog.show();
+           }else{
+               dialog = new MaterialDialog.Builder(this)
+                       .customView(R.layout.wrong_answer_layout, false)
+                       .build();
+               dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+               TextView right_answer = (TextView) dialog.getCustomView().findViewById(R.id.right_answer);
+               StringBuilder builder = new StringBuilder();
+               for(String s : answers) {
+                   builder.append(s+" ");
+               }
+               right_answer.setText(builder.toString());
+
+               dialog.show();
+           }
+
         }
+
     }
 
     private void setUpData(ArrayList<AssessmentPojo> assessmentPojos) {

@@ -5,5 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="theme_color">#eb384f</color>
     <color name="white">#ffffff</color>
+    <color name="palegray">#f5f6f9</color>
+    <color name="black_theme_text">#3f3f3f</color>
+    <color name="input_border">#9b9b9b</color>
+    <color name="green">#62bd3a</color>
+    <color name="errorText">#e35757</color>
 
 </resources>
