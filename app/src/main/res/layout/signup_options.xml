@@ -86,6 +86,7 @@
             android:elevation="5dp"
             android:layout_marginLeft="15dp"
             android:background="@mipmap/facebook"/>
+        <!--
         <com.facebook.login.widget.LoginButton
             android:id="@+id/btn_signup_fb"
             android:layout_width="match_parent"
@@ -94,6 +95,7 @@
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
             android:visibility="gone"/>
+            -->
 
     </LinearLayout>
 </LinearLayout>
