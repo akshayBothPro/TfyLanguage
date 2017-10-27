@@ -1,4 +1,4 @@
-package com.istarindia.tfylanguage;
+package com.istarindia.tfylanguage.util;
 
 /**
  * Created by akshay on 10/26/17.
@@ -7,6 +7,8 @@ package com.istarindia.tfylanguage;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.view.View;
+
+import com.istarindia.tfylanguage.CardAdapter;
 
 
 public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPager.PageTransformer {

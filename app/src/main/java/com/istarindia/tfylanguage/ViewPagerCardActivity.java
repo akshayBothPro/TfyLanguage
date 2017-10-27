@@ -5,6 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.istarindia.tfylanguage.util.ShadowTransformer;
+
 public class ViewPagerCardActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
