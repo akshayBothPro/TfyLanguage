@@ -8,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.istarindia.tfylanguage.pojo.GridItem;
 import com.istarindia.tfylanguage.util.ShadowTransformer;
 
 public class ViewPagerCardActivity extends AppCompatActivity {
+
+    public GridItem gridItem;
 
     private ViewPager mViewPager;
     private CardFragmentPagerAdapter mFragmentCardAdapter;
@@ -22,10 +25,14 @@ public class ViewPagerCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager_card);
 
+        if (getIntent().getExtras().containsKey("grid_item")) {
+            gridItem = (GridItem) getIntent().getExtras().getSerializable("grid_item");
+        }
+
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         courseImg = (ImageView) findViewById(R.id.iv_course);
         rootContainer = (CoordinatorLayout) findViewById(R.id.cl_root_container);
-        mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),dpToPixels(2,this));
+        mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),dpToPixels(2,this), gridItem.lessons);
         mFragmentCardShadowTransformer = new ShadowTransformer(mViewPager, mFragmentCardAdapter);
 
         mViewPager.setAdapter(mFragmentCardAdapter);
@@ -33,7 +40,6 @@ public class ViewPagerCardActivity extends AppCompatActivity {
         mViewPager.setOffscreenPageLimit(3);
 
     }
-
 
 
     public  static float dpToPixels(int dp, Context context) {
