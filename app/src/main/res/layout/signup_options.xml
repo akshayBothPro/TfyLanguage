@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginBottom="@dimen/loginpadding"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/or"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:background="@color/input_border" />
+
+        <Button
+            android:id="@+id/or"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/or_shape"
+            android:text="or"
+            android:clickable="false"
+            android:textAllCaps="false"
+            android:textColor="@color/input_border" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignRight="@+id/or"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/input_border" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_via_social"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
+        android:textSize="@dimen/p4"
+        android:textColor="@color/black_theme_text"
+        android:text="Log in via social media"
+        android:layout_margin="@dimen/loginpadding"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/loginpadding"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_signup_linkedIn"
+            android:layout_width="@dimen/iconlogosize"
+            android:layout_height="@dimen/iconlogosize"
+            android:elevation="5dp"
+            android:background="@mipmap/linked_in"
+            android:layout_marginRight="15dp"/>
+
+        <ImageButton
+            android:id="@+id/btn_signup_google"
+            android:layout_width="@dimen/iconlogosize"
+            android:layout_height="@dimen/iconlogosize"
+            android:elevation="5dp"
+            android:background="@mipmap/google"/>
+
+        <ImageButton
+            android:id="@+id/fb"
+            android:layout_width="@dimen/iconlogosize"
+            android:layout_height="@dimen/iconlogosize"
+            android:elevation="5dp"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/facebook"/>
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/btn_signup_fb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</LinearLayout>

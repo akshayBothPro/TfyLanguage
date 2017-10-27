@@ -12,10 +12,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".YoActivity" />
-        <activity android:name=".FlexActivity"></activity>
-        <activity android:name=".ViewPagerActivity">
-
-        </activity>
+        <activity android:name=".FlexActivity" />
+        <activity android:name=".ViewPagerActivity"></activity>
         <activity android:name=".ViewPagerCardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
