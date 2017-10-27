@@ -1,9 +1,12 @@
 package com.istarindia.tfylanguage;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.istarindia.tfylanguage.util.ShadowTransformer;
 
@@ -12,12 +15,16 @@ public class ViewPagerCardActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private CardFragmentPagerAdapter mFragmentCardAdapter;
     private ShadowTransformer mFragmentCardShadowTransformer;
+    public ImageView courseImg;
+    public CoordinatorLayout rootContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager_card);
 
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        courseImg = (ImageView) findViewById(R.id.iv_course);
+        rootContainer = (CoordinatorLayout) findViewById(R.id.cl_root_container);
         mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),dpToPixels(2,this));
         mFragmentCardShadowTransformer = new ShadowTransformer(mViewPager, mFragmentCardAdapter);
 
@@ -33,6 +40,10 @@ public class ViewPagerCardActivity extends AppCompatActivity {
         return dp * (context.getResources().getDisplayMetrics().density);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ViewPagerCardActivity.this, GridViewActivity.class));
+    }
 }
 
 
