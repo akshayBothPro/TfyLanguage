@@ -8,22 +8,22 @@ import java.util.ArrayList;
  */
 
 public class UserData implements Serializable {
-    public int userId;
+    public int id;
     ArrayList<GridItem> gridItems;
 
 
     public UserData(int id, ArrayList<GridItem> gridItems) {
-        this.userId = id;
+        this.id = id;
         this.gridItems = gridItems;
     }
 
 
     public int getId() {
-        return userId;
+        return id;
     }
 
     public void setId(int id) {
-        this.userId = id;
+        this.id = id;
     }
 
     public ArrayList<GridItem> getGridItems() {

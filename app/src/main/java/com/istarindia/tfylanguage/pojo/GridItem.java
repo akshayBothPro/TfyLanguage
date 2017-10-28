@@ -13,16 +13,19 @@ public class GridItem implements Serializable {
     public String imageUrl;
     public String color;
     public String name;
-    public ArrayList<AssessmentPojo> lessons;
+    public ArrayList<Lesson> lessons;
+    public int inCompleteLessons;
     public Boolean isCompleted;
 
+    public GridItem(){}
 
-    public GridItem(int id, String imageUrl, String color, String name, ArrayList<AssessmentPojo> lessons, Boolean isCompleted) {
+    public GridItem(int id, String imageUrl, String color, String name, ArrayList<Lesson> lessons, int inCompleteLessons, Boolean isCompleted) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.color = color;
         this.name = name;
         this.lessons = lessons;
+        this.inCompleteLessons = inCompleteLessons;
         this.isCompleted = isCompleted;
     }
 
@@ -58,12 +61,20 @@ public class GridItem implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<AssessmentPojo> getLessons() {
+    public ArrayList<Lesson> getLessons() {
         return lessons;
     }
 
-    public void setLessons(ArrayList<AssessmentPojo> lessons) {
+    public void setLessons(ArrayList<Lesson> lessons) {
         this.lessons = lessons;
+    }
+
+    public int getInCompleteLessons() {
+        return inCompleteLessons;
+    }
+
+    public void setInCompleteLessons(int inCompleteLessons) {
+        this.inCompleteLessons = inCompleteLessons;
     }
 
     public Boolean getCompleted() {

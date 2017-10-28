@@ -21,17 +21,19 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/a"
             android:layout_marginLeft="10dp"
             app:siBorderColor="@color/colorPrimary"
             app:siBorderWidth="25dp" />
         <Button
-            android:id="@+id/btn_ii"
+            android:id="@+id/btn_incomplete_lessons"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:background="@drawable/red_circle_btn"
             android:layout_alignBottom="@+id/icons"
             android:layout_alignRight="@+id/icons"
             android:layout_alignEnd="@+id/icons"
-            android:text="1" />
+            android:text="1"
+            android:visibility="invisible"/>
 </RelativeLayout>
