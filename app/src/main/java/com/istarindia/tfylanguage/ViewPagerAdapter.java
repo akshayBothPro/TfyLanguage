@@ -9,7 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.istarindia.tfylanguage.fragments.DragAndDrop;
+import com.istarindia.tfylanguage.fragments.EndAssessmentFragment;
+import com.istarindia.tfylanguage.fragments.ListenAndWrite;
 import com.istarindia.tfylanguage.pojo.AssessmentPojo;
+import com.istarindia.tfylanguage.pojo.AssessmentType;
 
 import java.util.ArrayList;
 
@@ -30,11 +33,25 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Fragment fragment = null;
+        if (position != assessmentPojos.size()) {
 
-        Fragment fragment = new DragAndDrop();
-        final Bundle bundle = new Bundle();
-        bundle.putSerializable(DragAndDrop.GET_OBJECT, assessmentPojos.get(position));
-        fragment.setArguments(bundle);
+            switch (assessmentPojos.get(position).getType()) {
+                case AssessmentType.DRAGNDROP:
+                    fragment = new DragAndDrop();
+                    break;
+                case AssessmentType.LISTENNWRITE:
+                    fragment = new ListenAndWrite();
+                    break;
+            }
+            final Bundle bundle = new Bundle();
+            bundle.putSerializable(DragAndDrop.GET_OBJECT, assessmentPojos.get(position));
+            fragment.setArguments(bundle);
+        }else{
+            fragment = new EndAssessmentFragment();
+        }
+
+
 
         return fragment;
     }

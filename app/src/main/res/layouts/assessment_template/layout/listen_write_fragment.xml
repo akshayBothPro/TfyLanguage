@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listen and Type"
+        android:textSize="21sp"
+        android:layout_margin="10dp"
+        android:id="@+id/listentext"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/listentext"
+        android:id="@+id/listening"
+        android:weightSum="100"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp">
+        <ImageButton
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@mipmap/ic_volume_up_black_48dp"
+            android:background="@drawable/imabe_button_circle"
+            android:id="@+id/large_sound"
+            android:tint="@color/white"
+            android:layout_margin="10dp"
+            />
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/ic_volume_down_black_24dp"
+            android:background="@drawable/imabe_button_circle"
+            android:id="@+id/small_sound"
+            android:tint="@color/white"
+            android:layout_margin="10dp"
+
+            />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/input_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_shape"
+        android:hint="Type the word"
+        android:gravity="top"
+        android:inputType="text"
+        android:textColorHint="@color/input_border"
+        android:textColor="@color/black_theme_text"
+        android:textCursorDrawable="@null"
+        android:layout_margin="5dp"
+        android:padding="15dp"
+        android:layout_below="@+id/listening"
+        android:layout_above="@+id/cantlisten"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Can't listen now?"
+        android:textSize="18sp"
+        android:layout_above="@+id/next"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:textAlignment="center"
+        android:id="@+id/cantlisten"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/next"
+        android:text="Check Answer"
+        android:textSize="19sp"
+        android:background="@drawable/signup_btn_shape"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+
+        />
+</RelativeLayout>

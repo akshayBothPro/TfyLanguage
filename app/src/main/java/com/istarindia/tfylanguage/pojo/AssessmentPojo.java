@@ -11,16 +11,16 @@ public class AssessmentPojo implements Serializable{
     private AnswerPojo answerPojo;
     private OptionPojo optionPojo;
     private QuestionPojo questionPojo;
+    private  String type;
     public AssessmentPojo() {
     }
 
-    public AssessmentPojo( AnswerPojo answerPojo, OptionPojo optionPojo, QuestionPojo questionPojo) {
+    public AssessmentPojo(AnswerPojo answerPojo, OptionPojo optionPojo, QuestionPojo questionPojo, String type) {
         this.answerPojo = answerPojo;
         this.optionPojo = optionPojo;
         this.questionPojo = questionPojo;
+        this.type = type;
     }
-
-
 
     public AnswerPojo getAnswerPojo() {
         return answerPojo;
@@ -44,5 +44,13 @@ public class AssessmentPojo implements Serializable{
 
     public void setQuestionPojo(QuestionPojo questionPojo) {
         this.questionPojo = questionPojo;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

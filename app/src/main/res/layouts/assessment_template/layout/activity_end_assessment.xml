@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".ViewPagerActivity">
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="You have reached the end of the assessment."
+        android:textSize="@dimen/h5"
+        android:textColor="@color/black_theme_text"
+        android:textStyle="normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
+
+        >
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="00:00"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:textColor="@color/bluecolor"/>
+
+        <TextView
+            android:id="@+id/unanswered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:textColor="@color/bluecolor"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_margin="5dp"
+
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="Time remaining"
+            android:id="@+id/time_remaining"
+            android:textAlignment="center"
+            android:textSize="@dimen/p3"
+            android:textColor="#a4a7a9"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="Unanswered"
+            android:id="@+id/unanswered_info"
+            android:textAlignment="center"
+            android:textSize="@dimen/p3"
+            android:textColor="#a4a7a9"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Click to submit to complete the test or go to the question list to review your answers"
+        android:id="@+id/info"
+        android:textSize="@dimen/p3"
+        android:textColor="#a4a7a9"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/signup_btn_shape"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/p1"
+        android:textStyle="normal" />
+
+</LinearLayout>

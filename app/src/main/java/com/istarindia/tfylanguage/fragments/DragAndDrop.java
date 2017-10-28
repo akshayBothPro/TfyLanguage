@@ -18,6 +18,7 @@ import com.istarindia.tfylanguage.pojo.AssessmentPojo;
 import com.istarindia.tfylanguage.util.FontUtil;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 /**
  * Created by istarferoz on 27/10/17.
@@ -36,6 +37,7 @@ public class DragAndDrop extends Fragment {
     private TextView questionText;
     private FontUtil fontUtil;
     private ArrayList<String> selectedOptions;
+    private TreeMap<Integer,Button> buttonmap = new TreeMap<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -101,7 +103,6 @@ public class DragAndDrop extends Fragment {
                     addButton.setTextSize(18);
                     addButton.setTextColor(getContext().getResources().getColor(R.color.black_theme_text));
                     addButton.setBackgroundColor(getContext().getResources().getColor(R.color.white));
-
                     setTopClick(addButton);
                     topflexlayout.addView(addButton);
 
@@ -131,7 +132,6 @@ public class DragAndDrop extends Fragment {
 
 
 
-
                 }
             }
         });
@@ -142,6 +142,10 @@ public class DragAndDrop extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                selectedOptions.remove(((Button)v).getText().toString());
+
                 int tag_position = (int) v.getTag();
                 System.out.println("top click tag position---> "+tag_position);
                 Button b = (Button) bottomflex.getChildAt(tag_position);
@@ -167,7 +171,7 @@ public class DragAndDrop extends Fragment {
 
     private void topToBottomAnimation(float fx, float x, float fy, float y,final Button b, final View v,final String buttonText) {
         final Animation animation = new TranslateAnimation(fx,x,fy,y);
-        animation.setDuration(500);
+        animation.setDuration(200);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -197,7 +201,7 @@ public class DragAndDrop extends Fragment {
 
     private void BottomToTopAnimation(float fromX, float toX, float fromY, float toY, final String text,final Button topButton){
         final Animation animation = new TranslateAnimation(fromX,toX,fromY,toY);
-        animation.setDuration(300);
+        animation.setDuration(200);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

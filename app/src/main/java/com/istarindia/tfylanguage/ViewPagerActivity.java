@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.eftimoff.viewpagertransformers.DepthPageTransformer;
 import com.istarindia.tfylanguage.pojo.AnswerPojo;
 import com.istarindia.tfylanguage.pojo.AssessmentPojo;
+import com.istarindia.tfylanguage.pojo.AssessmentType;
 import com.istarindia.tfylanguage.pojo.OptionPojo;
 import com.istarindia.tfylanguage.pojo.QuestionPojo;
 
@@ -31,6 +33,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(this,getSupportFragmentManager(),assessmentPojos);
         lockableViewPager.setAdapter(viewPagerAdapter);
         lockableViewPager.setSwipeLocked(true);
+        lockableViewPager.setPageTransformer(true, new DepthPageTransformer());
 
     }
 
@@ -109,9 +112,11 @@ public class ViewPagerActivity extends AppCompatActivity {
         options.add("salman");
         optionPojo.setOptions(options);
 
-        AssessmentPojo assessmentPojo = new AssessmentPojo(answerPojo,optionPojo,questionPojo);
+        AssessmentPojo assessmentPojo = new AssessmentPojo(answerPojo,optionPojo,questionPojo, AssessmentType.DRAGNDROP);
+        AssessmentPojo assessmentPojo1 = new AssessmentPojo(answerPojo,optionPojo,questionPojo,AssessmentType.LISTENNWRITE);
 
         assessmentPojos.add(assessmentPojo);
+        assessmentPojos.add(assessmentPojo1);
 
 
 
