@@ -29,7 +29,6 @@ android {
                            'src/main/res/layouts/grid_item'
 
 
-
             ]
             //jniLibs.srcDir 'src/main/libs'
         }
@@ -50,6 +49,7 @@ dependencies {
 
 
 
+
     compile 'com.android.support:appcompat-v7:26.0.0'
     compile 'com.android.support:recyclerview-v7:26.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -63,5 +63,6 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.felipecsl.asymmetricgridview:library:2.0.1'
     compile 'com.google.code.gson:gson:2.8.0'
+    compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
     testCompile 'junit:junit:4.12'
 }

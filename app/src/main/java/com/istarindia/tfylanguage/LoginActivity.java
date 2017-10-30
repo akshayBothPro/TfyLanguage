@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -11,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.InputType;
+import android.util.Base64;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,9 +24,21 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.felipecsl.gifimageview.library.GifImageView;
+
+import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+
+import static com.istarindia.tfylanguage.R.id.rootView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, EditText.OnEditorActionListener{
 
@@ -30,13 +47,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public ImageButton iv_show_password;
     public TextView tv_error_password;
 
+    public GifImageView gifImageView;
+    public RelativeLayout progresslayout;
+    public LinearLayout ll_input_con;
+
     private SharedPreferences sharedpreferences;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        progresslayout = (RelativeLayout) findViewById(R.id.progresslayout);
+        ll_input_con = (LinearLayout) findViewById(R.id.ll_input_con);
 
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
@@ -45,6 +70,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         iv_show_password = (ImageButton) findViewById(R.id.iv_show_password);
         tv_error_password = (TextView) findViewById(R.id.tv_error_password);
         btn_register_instead = (Button) findViewById(R.id.btn_register_instead);
+        gifImageView = (GifImageView) findViewById(R.id.gifImageView);
+        InputStream inputStream = null;
+        try {
+            inputStream = getAssets().open(getResources().getString(R.string.progressgif));
+            byte[] bytes = IOUtils.toByteArray(inputStream);
+            gifImageView.setBytes(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
 
@@ -220,5 +254,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            gifImageView.stopAnimation();
+            //new MemoryUtilizerUtil(rootView, this);
+        } catch (Exception e) {
+        }
+
+        Log.d("Loginactvity", "The onDestroy() event");
+    }
+
+    /*
+    public void generateHashkey() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    PACKAGE,
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+
+                System.out.println("HAsh is ---------> " + Base64.encodeToString(md.digest(),
+                        Base64.NO_WRAP));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("Name not found", e.getMessage(), e);
+
+        } catch (NoSuchAlgorithmException e) {
+            Log.d("Error", e.getMessage(), e);
+        }
+    }*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //new GoogleAnalyticsUtil(this).sendAnalyticMessage("LOGIN");
     }
 }

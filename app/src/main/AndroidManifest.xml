@@ -17,18 +17,17 @@
         <activity android:name=".YoActivity" />
         <activity android:name=".FlexActivity" />
         <activity android:name=".ViewPagerActivity" />
-        <activity android:name=".GridViewActivity">
-
-        </activity>
+        <activity android:name=".GridViewActivity" />
         <activity android:name=".ViewPagerCardActivity" />
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".ForgotActivity" />
+        <activity android:name=".SplashScreenActivity"></activity>
     </application>
 
 </manifest>

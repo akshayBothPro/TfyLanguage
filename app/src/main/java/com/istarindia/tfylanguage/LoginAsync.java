@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.istarindia.tfylanguage.pojo.StudentProfile;
+import com.istarindia.tfylanguage.complexobject.StudentProfile;
 import com.istarindia.tfylanguage.util.HttpUtil;
 
 import java.util.HashMap;
@@ -82,32 +80,27 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
                 context.startActivity(i);
                 ((Activity)context).finish();
                 */
-                i = new Intent(context, GridViewActivity.class);
+
+                if (context instanceof LoginActivity)
+                    ((LoginActivity) context).gifImageView.stopAnimation();
+
+                i = new Intent(context, SplashScreenActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
                 ((Activity)context).finish();
 
             } catch (Exception e) {
-                ((LoginActivity) context).tv_error_password.setText("Oops! something went wrong.");
-                ((LoginActivity) context).tv_error_password.setVisibility(View.VISIBLE);
+                setErrorMessage("Oops! something went wrong.");
             }
-
         } else if (!jsonresponse.equalsIgnoreCase("null") && jsonresponse.contains("istarViksitProComplexKey")) {
-            ((LoginActivity) context).tv_error_password.setText(jsonresponse.replaceAll("istarViksitProComplexKey", "").replaceAll("\"", ""));
-            ((LoginActivity) context).tv_error_password.setVisibility(View.VISIBLE);
+            setErrorMessage(jsonresponse.replaceAll("istarViksitProComplexKey", "").replaceAll("\"", ""));
         } else {
-            /*
-            ((TextView) dialog.getCustomView().findViewById(R.id.error_info)).setText("Please check your internet connection.");
-            setErrorMessage("");
-            dialog.show();*/
-            ((LoginActivity) context).tv_error_password.setText("Please check your internet connection.");
-            ((LoginActivity) context).tv_error_password.setVisibility(View.VISIBLE);
-
+            setErrorMessage("Please check your internet connection.");
         }
 
     }
 
-    /*
+
     private void setErrorMessage(String message) {
         if (context instanceof LoginActivity) {
             ((LoginActivity) context).ll_input_con.setVisibility(View.VISIBLE);
@@ -119,7 +112,7 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
             ((LoginActivity) context).progresslayout.setVisibility(View.GONE);
             ((LoginActivity) context).login_submit.setEnabled(true);
         }
-
+/*
         else {
             ((SignupActivity) context).ll_input_con.setVisibility(View.VISIBLE);
             if (!message.equalsIgnoreCase("")) {
@@ -129,14 +122,14 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
             ((SignupActivity) context).gifImageView.stopAnimation();
             ((SignupActivity) context).progresslayout.setVisibility(View.GONE);
 
-        }
+        }*/
     }
-    */
+
 
     @Override
     protected void onProgressUpdate(Integer... progress) {
         super.onProgressUpdate(progress);
-        /*
+
         if (context instanceof LoginActivity) {
 
             ((LoginActivity) context).ll_input_con.setVisibility(View.GONE);
@@ -145,7 +138,7 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
 
             ((LoginActivity) context).tv_error_password.setVisibility(View.GONE);
         }
-
+/*
         else {
             ((SignupActivity) context).ll_input_con.setVisibility(View.GONE);
             ((SignupActivity) context).progresslayout.setVisibility(View.VISIBLE);
