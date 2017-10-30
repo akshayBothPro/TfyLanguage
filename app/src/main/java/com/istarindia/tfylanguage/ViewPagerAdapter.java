@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.istarindia.tfylanguage.fragments.DragAndDrop;
 import com.istarindia.tfylanguage.fragments.EndAssessmentFragment;
+import com.istarindia.tfylanguage.fragments.FourOptionFragment;
 import com.istarindia.tfylanguage.fragments.ListenAndWrite;
 import com.istarindia.tfylanguage.pojo.AssessmentPojo;
 import com.istarindia.tfylanguage.pojo.AssessmentType;
@@ -42,6 +43,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                     break;
                 case AssessmentType.LISTENNWRITE:
                     fragment = new ListenAndWrite();
+                    break;
+                case AssessmentType.FOUROPTION:
+                    fragment = new FourOptionFragment();
                     break;
             }
             final Bundle bundle = new Bundle();

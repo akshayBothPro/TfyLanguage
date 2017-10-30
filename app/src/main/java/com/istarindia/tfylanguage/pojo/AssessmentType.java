@@ -7,5 +7,6 @@ package com.istarindia.tfylanguage.pojo;
 public class AssessmentType {
     public static final String DRAGNDROP = "DRAGNDROP";
     public static final String LISTENNWRITE = "LISTENNWRITE";
+    public static final String FOUROPTION = "FOUROPTION";
 
 }

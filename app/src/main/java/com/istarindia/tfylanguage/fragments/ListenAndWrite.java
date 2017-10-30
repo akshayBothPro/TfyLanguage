@@ -13,9 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.istarindia.tfylanguage.R;
+import com.istarindia.tfylanguage.ViewPagerActivity;
 import com.istarindia.tfylanguage.pojo.AssessmentPojo;
 import com.istarindia.tfylanguage.util.FontUtil;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -31,6 +33,7 @@ public class ListenAndWrite extends Fragment implements View.OnClickListener,Tex
     private AppCompatEditText input_text;
     private FontUtil fontUtil;
     private TextToSpeech tts;
+    private ArrayList<String> selectedOptions = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +69,10 @@ public class ListenAndWrite extends Fragment implements View.OnClickListener,Tex
                 break;
             case R.id.small_sound:
                 speakOut(0.6f,0.3f);
+                break;
+            case R.id.next:
+                ((ViewPagerActivity)getActivity()).next(assessmentPojo,selectedOptions);
+
                 break;
 
         }

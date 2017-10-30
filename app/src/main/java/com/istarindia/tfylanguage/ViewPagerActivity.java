@@ -109,11 +109,13 @@ public class ViewPagerActivity extends AppCompatActivity {
         options.add("rukh");
         options.add("khan");
         options.add("aamir");
-        options.add("salman");
+
         optionPojo.setOptions(options);
 
         AssessmentPojo assessmentPojo = new AssessmentPojo(answerPojo,optionPojo,questionPojo, AssessmentType.DRAGNDROP);
         AssessmentPojo assessmentPojo1 = new AssessmentPojo(answerPojo,optionPojo,questionPojo,AssessmentType.LISTENNWRITE);
+        AssessmentPojo assessmentPojo2 = new AssessmentPojo(answerPojo,optionPojo,questionPojo,AssessmentType.FOUROPTION);
+        assessmentPojos.add(assessmentPojo2);
 
         assessmentPojos.add(assessmentPojo);
         assessmentPojos.add(assessmentPojo1);

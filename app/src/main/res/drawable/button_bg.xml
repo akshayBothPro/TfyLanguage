@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <stroke
         android:width="3dp"
-        android:color="#ff000000" />
+        android:color="@color/input_border"
+
+        />
+    <solid android:color="@android:color/white" />
 
     <padding
         android:bottom="1dp"
