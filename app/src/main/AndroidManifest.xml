@@ -15,19 +15,16 @@
         <activity android:name=".Main2Activity" ></activity>
         <activity android:name=".YoActivity" ></activity>
         <activity android:name=".FlexActivity" ></activity>
-        <activity android:name=".ViewPagerActivity">
+        <activity android:name=".ViewPagerActivity"></activity>
+        <activity android:name=".GridViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewPagerCardActivity">
-
-        </activity>
-        <activity android:name=".LoginActivity">
-
-        </activity>
+        <activity android:name=".ViewPagerCardActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

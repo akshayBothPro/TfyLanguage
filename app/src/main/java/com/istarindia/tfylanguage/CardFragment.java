@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.istarindia.tfylanguage.pojo.Lesson;
+
 import org.w3c.dom.Text;
 
 
@@ -27,6 +29,8 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     public ImageView completedIcon;
     public TextView cardTitle, cardDescription;
     public Button start;
+    private Lesson lesson;
+
 
     @Nullable
     @Override
@@ -39,10 +43,14 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         cardDescription = (TextView) view.findViewById(R.id.tv_card_description);
         start = (Button) view.findViewById(R.id.btn_start);
 
+        lesson = (Lesson) getArguments().getSerializable("lesson");
+        cardTitle.setText( "" + lesson.getId());
+        cardDescription.setText("" + lesson.getDescription());
+
         mCardView.setMaxCardElevation(mCardView.getCardElevation()
                 * CardAdapter.MAX_ELEVATION_FACTOR);
-
         start.setOnClickListener(this);
+
         return view;
     }
 
@@ -54,7 +62,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_start:
-                //do something
+                //do something // goto view pager activity
                 System.out.println(view.getId());
                 break;
         }

@@ -19,19 +19,6 @@ public class GridViewActivity extends AppCompatActivity {
     ArrayList<GridItem> gridItems = new ArrayList<>();
     GridView gridView;
 
-    /*
-    String letterList[] = {
-            "A", "D", "L", "M", "R",
-            "A", "D", "L", "M", "R",
-            "A", "D", "L", "M", "R"
-    };
-
-    int lettersIcon[] = {
-            R.drawable.a, R.drawable.d, R.drawable.l, R.drawable.m, R.drawable.r,
-            R.drawable.a, R.drawable.d, R.drawable.l, R.drawable.m, R.drawable.r,
-            R.drawable.a, R.drawable.d, R.drawable.l, R.drawable.m, R.drawable.r
-    };*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,21 +29,6 @@ public class GridViewActivity extends AppCompatActivity {
 
         GridAdapter adapter = new GridAdapter(GridViewActivity.this, gridItems);
         gridView.setAdapter(adapter);
-        /*
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("item grid" , gridItems.get(i).name);
-                Toast.makeText(GridViewActivity.this, "Clicked course: " + gridItems.get(i).name, Toast.LENGTH_SHORT).show();
-                //start view pager card activity and send griditem at index 'i' in the intent
-
-                Intent intent = new Intent(GridViewActivity.this, ViewPagerCardActivity.class);
-                intent.putExtra("grid_item", gridItems.get(i));
-
-                startActivity(intent);
-            }
-        });
-        */
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -70,18 +42,9 @@ public class GridViewActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void setDummyData() {
-
-        /* public int id;
-    public String imageUrl;
-    public String color;
-    public String name;
-    public ArrayList<Lesson> lessons;
-    public int inCompleteLessons;
-    public Boolean isCompleted;*/
 
         GridItem item;
         Lesson lesson;
@@ -93,7 +56,7 @@ public class GridViewActivity extends AppCompatActivity {
             item.setColor("#ee6723");
             item.setName("Course " + i);
             lessonList = new ArrayList<>();
-            for(int j = 1; j < 4; j++) {
+            for(int j = 1; j < 3; j++) {
                 lesson = new Lesson(j,"this is the lesson ,serialized as " + j);
                 lessonList.add(lesson);
             }

@@ -14,9 +14,6 @@ import android.widget.RelativeLayout;
 public class YoActivity extends AppCompatActivity {
 
 
-
-
-
     public static final int ANIMATION_SPEED = 3000;
     private RelativeLayout rootView;
     private View fromView, toView, shuttleView;

@@ -2,6 +2,7 @@ package com.istarindia.tfylanguage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 
 import com.istarindia.tfylanguage.pojo.GridItem;
 import com.istarindia.tfylanguage.util.ShadowTransformer;
+import com.squareup.picasso.Picasso;
 
 public class ViewPagerCardActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class ViewPagerCardActivity extends AppCompatActivity {
     private ShadowTransformer mFragmentCardShadowTransformer;
     public ImageView courseImg;
     public CoordinatorLayout rootContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +42,12 @@ public class ViewPagerCardActivity extends AppCompatActivity {
         mViewPager.setPageTransformer(false, mFragmentCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(3);
 
-    }
+        rootContainer.setBackgroundColor(Color.parseColor(gridItem.color));
+        Picasso.with(this)
+                .load(gridItem.imageUrl)
+                .into(courseImg);
 
+    }
 
     public  static float dpToPixels(int dp, Context context) {
         return dp * (context.getResources().getDisplayMetrics().density);
