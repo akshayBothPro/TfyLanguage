@@ -25,7 +25,9 @@ android {
             assets.srcDirs = ['src/main/assets', 'src/main/assets/']
             res.srcDirs = ['src/main/res/layouts',
                            'src/main/res',
-                           'src/main/res/layouts/assessment_template'
+                           'src/main/res/layouts/assessment_template',
+                           'src/main/res/layouts/grid_item'
+
 
 
             ]

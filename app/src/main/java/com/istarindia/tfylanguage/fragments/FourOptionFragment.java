@@ -100,6 +100,7 @@ public class FourOptionFragment extends Fragment {
     private void setListener(View option_view){
         LinearLayout ll = (LinearLayout) option_view.findViewById(R.id.ll);
         final RadioButton radioButton = (RadioButton) option_view.findViewById(R.id.radio0);
+        radioButton.setEnabled(false);
         mymap.put(radioButton,ll);
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +115,7 @@ public class FourOptionFragment extends Fragment {
                     }
                     rr.setHighlightColor(getResources().getColor(R.color.input_border));
                     rr.setChecked(false);
+                    rr.setEnabled(false);
                 }
                 GradientDrawable bgShape = (GradientDrawable) v.getBackground();
                 bgShape.setStroke(10, getResources().getColor(R.color.bluecolor));
@@ -123,6 +125,7 @@ public class FourOptionFragment extends Fragment {
                 }
                 radioButton.setHighlightColor(getResources().getColor(R.color.bluecolor));
                 radioButton.setChecked(true);
+                radioButton.setEnabled(true);
             }
         });
 

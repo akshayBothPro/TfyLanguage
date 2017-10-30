@@ -6,14 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.istarindia.tfylanguage.GridViewActivity">
 
-    <GridView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gridview"
-        android:columnWidth="100dp"
-        android:numColumns="2"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="0dp"
-        android:stretchMode="spacingWidthUniform"
-        />
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 </RelativeLayout>
