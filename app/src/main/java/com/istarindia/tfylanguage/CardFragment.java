@@ -46,6 +46,11 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         lesson = (Lesson) getArguments().getSerializable("lesson");
         cardTitle.setText( "" + lesson.getId());
         cardDescription.setText("" + lesson.getDescription());
+        if (lesson.getCompleted()) {
+            completedIcon.setVisibility(View.VISIBLE);
+        } else {
+            completedIcon.setVisibility(View.INVISIBLE);
+        }
 
         mCardView.setMaxCardElevation(mCardView.getCardElevation()
                 * CardAdapter.MAX_ELEVATION_FACTOR);

@@ -79,7 +79,7 @@
                     android:background="#00000000"
                     android:tint="@color/input_border"
                     android:paddingRight="5dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_remove_red_eye_black_24dp"/>
             </RelativeLayout>
 
             <TextView

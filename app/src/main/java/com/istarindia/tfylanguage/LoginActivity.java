@@ -30,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public ImageButton iv_show_password;
     public TextView tv_error_password;
 
+    private SharedPreferences sharedpreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tv_error_password = (TextView) findViewById(R.id.tv_error_password);
         btn_register_instead = (Button) findViewById(R.id.btn_register_instead);
 
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
 
         login_submit.setOnClickListener(this);
         iv_show_password.setOnClickListener(this);
@@ -160,15 +163,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         HashMap<String, String> params = new HashMap<String, String>();
         params.put(getResources().getString(R.string.email), emailid);
         params.put(getResources().getString(R.string.password), pasword);
-        /*
+
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("email", emailid);
         editor.putString("password", pasword);
         editor.commit();
         editor.apply();
-        */
 
-        //new LoginAsync(params, this, dialog, sharedpreferences).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getResources().getString(R.string.loginurl));
+
+        new LoginAsync(params, this, sharedpreferences).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getResources().getString(R.string.loginurl));
 
     }
 

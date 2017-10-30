@@ -48,16 +48,26 @@ public class GridViewActivity extends AppCompatActivity {
 
         GridItem item;
         Lesson lesson;
+        int n = 0;
         ArrayList<Lesson> lessonList;
         for(int i = 1; i <= 12; i++){
             item = new GridItem();
             item.setId(i);
-            item.setImageUrl("http://cdn.talentify.in:9999//course_images/7.png");
-            item.setColor("#ee6723");
+
+            if (i % 2 == 0) {
+                item.setColor("#ee6723");
+                item.setImageUrl("http://cdn.talentify.in:9999//course_images/7.png");
+                n = 5;
+            } else {
+                item.setColor("#ff4444");
+                item.setImageUrl("http://cdn.talentify.in:9999//course_images/m_83.png");
+                n = 8;
+            }
+
             item.setName("Course " + i);
             lessonList = new ArrayList<>();
-            for(int j = 1; j < 3; j++) {
-                lesson = new Lesson(j,"this is the lesson ,serialized as " + j);
+            for(int j = 1; j < n; j++) {
+                lesson = new Lesson(j,"this is the lesson ,serialized as " + j, true);
                 lessonList.add(lesson);
             }
             item.setLessons(lessonList);

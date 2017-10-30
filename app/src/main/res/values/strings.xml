@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">TfyLanguage</string>
+    <string name="shared_preference_key">istarViksitProComplexKey</string>
 
     <string name="email">email</string>
     <string name="password">password</string>
+
+    <string name="serverip">http://elt.talentify.in/t2c/</string>
+    <string name="loginurl">auth/login</string>
+
+    <string name="user_profile">USERPROFILE</string>
 </resources>
