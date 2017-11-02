@@ -13,6 +13,8 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.istarindia.tfylanguage.complexobject.ConcreteItemPOJO;
+import com.istarindia.tfylanguage.complexobject.LessonPOJO;
 import com.istarindia.tfylanguage.pojo.Lesson;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ import java.util.List;
 public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implements CardAdapter {
 
     private List<CardFragment> mFragments;
-    private List<Lesson> lessons;
+    private List<ConcreteItemPOJO> lessons;
     private float mBaseElevation;
 
     /*
@@ -36,13 +38,13 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
         }
     }*/
 
-    public CardFragmentPagerAdapter(FragmentManager fm, float baseElevation, List<Lesson> lessons) {
+    public CardFragmentPagerAdapter(FragmentManager fm, float baseElevation, List<ConcreteItemPOJO> lessons) {
         super(fm);
         mFragments = new ArrayList<>();
         mBaseElevation = baseElevation;
         this.lessons = lessons;
         CardFragment card;
-        for (Lesson lesson : lessons) {
+        for (ConcreteItemPOJO lesson : lessons) {
             card = new CardFragment();
             Bundle args = new Bundle();
             args.putSerializable("lesson",lesson);

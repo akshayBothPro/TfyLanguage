@@ -46,7 +46,7 @@ public class GridViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grid_view);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        //setDummyData();
+
 
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         String complexObjectResponse = sharedpreferences.getString("COMPLEX_OBJECT_RESPONSE", "");
@@ -74,21 +74,11 @@ public class GridViewActivity extends AppCompatActivity {
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                /*
-                if (position == 0) {
-                    return 2; // the item in position now takes up 4 spans
-                }*/
 
                  //to be uncommented
                 if (moduleList.get(position).getFirst()) {
                     return 2; // the item in position now takes up 4 spans
                 }
-
-
-                /*
-                if (position == 2) {
-                    return 2; // the item in position now takes up 4 spans
-                }*/
 
 
                 return 1;
@@ -115,14 +105,6 @@ public class GridViewActivity extends AppCompatActivity {
     }
 
     public void setDummyData() {
-
-        /* public int id;
-    public String imageUrl;
-    public String color;
-    public String name;
-    public ArrayList<Lesson> lessons;
-    public int inCompleteLessons;
-    public Boolean isCompleted;*/
 
         GridItem item;
         Lesson lesson;

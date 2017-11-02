@@ -54,6 +54,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         //imageView.setBorderColor(Color.parseColor(item.color));
         Picasso.with(this.context)
                 .load(item.getImageURL())
+                .placeholder(R.drawable.a)
                 .into(imageView);
         textView.setText(item.getName());
 
@@ -76,7 +77,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
                 bundle.putSerializable("grid_item", item);
                 moduleIntent.putExtras(bundle);
                 context.startActivity(moduleIntent);
-                //((Activity) context).overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
                 ((Activity) context).finish();
             }
         });
@@ -87,12 +87,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
         switch (view.getId()) {
             case R.id.relativeLayout:
-                Log.i("","rrrr");
-                /*Intent moduleIntent = new Intent(context, ViewPagerCardActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("grid_item", item);
-                moduleIntent.putExtras(bundle);
-                context.startActivity(moduleIntent);*/
                 break;
         }
 

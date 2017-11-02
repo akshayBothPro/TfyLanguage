@@ -4,17 +4,17 @@
     android:id="@+id/cardView"
     app:cardUseCompatPadding="true"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="230dp"
     android:layout_gravity="center">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_marginTop="10dp"
@@ -25,28 +25,40 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:textSize="@dimen/h1"
                 android:text="Card title" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv_card_title"
+                android:layout_above="@+id/btn_start">
+                <TextView
+                    android:id="@+id/tv_card_description"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:maxLines="4"
+                    android:textSize="@dimen/p1"
+                    android:text="Lorem ipsum dolor sit amet ipsum dolor sit amet, igula eu lectus lobortis condimentum." />
 
-            <TextView
-                android:id="@+id/tv_card_description"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:textSize="@dimen/h5"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eget ligula eu lectus lobortis condimentum." />
+            </RelativeLayout>
+
 
             <Button
                 android:id="@+id/btn_start"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:background="@drawable/signup_btn_shape"
+                android:layout_alignParentBottom="true"
                 android:text="Start" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/iv_completed_icon"
