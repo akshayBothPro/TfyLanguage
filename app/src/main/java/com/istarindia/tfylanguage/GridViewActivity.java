@@ -67,7 +67,6 @@ public class GridViewActivity extends AppCompatActivity {
 
         }
 
-        //
         recyclerGridViewAdapter = new RecyclerGridViewAdapter(this,moduleList);
         recyclerView.setAdapter(recyclerGridViewAdapter);
         GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);

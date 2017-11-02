@@ -27,7 +27,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textSize="@dimen/h1"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textSize="@dimen/h3"
                 android:text="Card title" />
             <RelativeLayout
                 android:layout_width="match_parent"

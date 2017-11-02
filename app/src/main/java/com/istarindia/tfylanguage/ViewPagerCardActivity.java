@@ -49,7 +49,6 @@ public class ViewPagerCardActivity extends AppCompatActivity {
         Picasso.with(this)
                 .load(gridItem.getImageURL())
                 .into(courseImg);
-
     }
 
     public  static float dpToPixels(int dp, Context context) {
@@ -61,5 +60,3 @@ public class ViewPagerCardActivity extends AppCompatActivity {
         startActivity(new Intent(ViewPagerCardActivity.this, GridViewActivity.class));
     }
 }
-
-

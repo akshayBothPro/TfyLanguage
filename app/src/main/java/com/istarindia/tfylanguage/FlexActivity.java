@@ -23,8 +23,8 @@ public class FlexActivity extends AppCompatActivity {
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT);
     RelativeLayout main;
-    int position =0;
-    int lastposition =0;
+    int position = 0;
+    int lastposition = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

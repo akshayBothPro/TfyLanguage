@@ -37,11 +37,7 @@ public class ViewPagerActivity extends AppCompatActivity {
 
     }
 
-
-
-
     public void next(AssessmentPojo assessmentPojo, ArrayList<String> selectedOptions){
-
 
         if(dialog != null){
             dialog = null;

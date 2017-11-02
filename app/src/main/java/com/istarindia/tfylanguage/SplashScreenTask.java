@@ -55,10 +55,10 @@ public class SplashScreenTask extends AsyncTask<Void, Void, String> {
             response = httpUtil.getStringResponse();
 
 
-            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-            System.out.println("COMPLEX OBJECT Parse STARTED");
-            ComplexObject complexObject = gson.fromJson(response, ComplexObject.class);
-            System.out.println("COMPLEX OBJECT PARSE  STOPPED");
+            //Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+            //System.out.println("COMPLEX OBJECT Parse STARTED");
+            //ComplexObject complexObject = gson.fromJson(response, ComplexObject.class);
+            //System.out.println("COMPLEX OBJECT PARSE  STOPPED");
             //List<Callable<String>> tasks = new ArrayList<>();
 
             editor.putString("COMPLEX_OBJECT_RESPONSE", response);

@@ -3,7 +3,10 @@ package com.istarindia.tfylanguage;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +17,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.felipecsl.asymmetricgridview.library.Utils;
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.istarindia.tfylanguage.complexobject.ModulePOJO;
 import com.istarindia.tfylanguage.pojo.GridItem;
 import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by istarferoz on 30/10/17.
@@ -47,16 +55,13 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     }
 
-    public void setData(ModulePOJO item) {
+    public void setData(final ModulePOJO item) {
         this.item = item;
         textView.setText(item.getName());
 
         //imageView.setBorderColor(Color.parseColor(item.color));
-        Picasso.with(this.context)
-                .load(item.getImageURL())
-                .placeholder(R.drawable.a)
-                .into(imageView);
-        textView.setText(item.getName());
+        new DownloadImagesTask(imageView,item.getImageURL()).execute();
+
 
         /*
         if (item.inCompleteLessons != 0) {
@@ -90,5 +95,46 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
                 break;
         }
 
+    }
+
+    public class DownloadImagesTask extends AsyncTask<ImageView, Void, Bitmap> {
+
+        ImageView imageView = null;
+        String url;
+        public DownloadImagesTask(ImageView imageView,String url){
+            this.imageView = imageView;
+            this.url = url;
+        }
+
+        @Override
+        protected Bitmap doInBackground(ImageView... imageViews) {
+            return download_Image(url);
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            if (result != null)
+                imageView.setImageBitmap(result);
+            //} else {
+                //imageView.setImageResource(R.drawable.a);
+            //}
+
+        }
+
+        private Bitmap download_Image(String url) {
+
+            Bitmap bmp =null;
+            try{
+                URL ulrn = new URL(url);
+                HttpURLConnection con = (HttpURLConnection)ulrn.openConnection();
+                InputStream is = con.getInputStream();
+                bmp = BitmapFactory.decodeStream(is);
+                if (bmp != null)
+                    return bmp;
+
+            } catch (Exception e){}
+
+            return bmp;
+        }
     }
 }

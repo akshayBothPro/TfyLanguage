@@ -46,8 +46,9 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         start = (Button) view.findViewById(R.id.btn_start);
 
         lesson = (ConcreteItemPOJO) getArguments().getSerializable("lesson");
-        cardTitle.setText( "" + lesson.getId());
-        //cardDescription.setText("" + lesson.getDescription());
+        cardTitle.setText( "" + lesson.getLesson().getTitle());
+        cardDescription.setText("" + lesson.getLesson().getDescription());
+
         /*
         if (lesson.getCompleted()) {
             completedIcon.setVisibility(View.VISIBLE);

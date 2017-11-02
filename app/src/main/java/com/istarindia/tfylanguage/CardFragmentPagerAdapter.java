@@ -26,18 +26,6 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
     private List<ConcreteItemPOJO> lessons;
     private float mBaseElevation;
 
-    /*
-    //we will add list of fragments here in the constructor as one more parameter
-    public CardFragmentPagerAdapter(FragmentManager fm, float baseElevation ) {
-        super(fm);
-        mFragments = new ArrayList<>();
-        mBaseElevation = baseElevation;
-
-        for(int i = 0; i< 5; i++){
-            addCardFragment(new CardFragment());
-        }
-    }*/
-
     public CardFragmentPagerAdapter(FragmentManager fm, float baseElevation, List<ConcreteItemPOJO> lessons) {
         super(fm);
         mFragments = new ArrayList<>();
@@ -45,11 +33,14 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
         this.lessons = lessons;
         CardFragment card;
         for (ConcreteItemPOJO lesson : lessons) {
-            card = new CardFragment();
-            Bundle args = new Bundle();
-            args.putSerializable("lesson",lesson);
-            card.setArguments(args);
-            addCardFragment(card);
+            if ((lesson.getType() != "") && ((lesson.getType().equalsIgnoreCase("LESSON_PRESENTATION")) || (lesson.getType().equalsIgnoreCase("PRESENTATION")))) {
+                card = new CardFragment();
+                Bundle args = new Bundle();
+                args.putSerializable("lesson",lesson);
+                card.setArguments(args);
+                addCardFragment(card);
+            }
+
         }
     }
 

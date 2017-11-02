@@ -25,24 +25,6 @@ public class SplashScreenActivity extends AppCompatActivity /* implements Splash
 
     private TextView appname;
 
-    /*
-    private Runnable startBackgroundTasks = new Runnable() {
-        @Override
-        public void run() {
-            //  Do initial background tasks like sounds load
-            SplashScreenTask task = new SplashScreenTask(SplashScreenActivity.this, editor, user_id, sharedpreferences);
-            task.setListener(SplashScreenActivity.this);
-            task.execute();
-        }
-    };
-
-    private Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            OnSplashScreenTaskCompleted();
-        }
-    };*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +39,6 @@ public class SplashScreenActivity extends AppCompatActivity /* implements Splash
         if (studentProfile != null && studentProfile.getId() != null)
             user_id = studentProfile.getId();
 
-        //( context, editor, user_id, sharedpreferences) {
 
         SplashScreenTask splashScreenTask = new SplashScreenTask(this, editor, user_id, sharedpreferences);
         splashScreenTask.execute();
