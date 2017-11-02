@@ -5,6 +5,7 @@ package com.istarindia.tfylanguage;
  */
 
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -68,6 +69,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.btn_start:
                 //do something // goto view pager activity
+                startActivity(new Intent(getContext(),ViewPagerActivity.class));
                 System.out.println(view.getId());
                 break;
         }

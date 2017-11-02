@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.istarindia.tfylanguage.complexobject.ModulePOJO;
 import com.istarindia.tfylanguage.pojo.GridItem;
 
 import java.util.ArrayList;
@@ -16,11 +17,17 @@ import java.util.ArrayList;
 
 public class RecyclerGridViewAdapter extends RecyclerView.Adapter {
 
-    ArrayList<GridItem> gridItems;
+    ArrayList<ModulePOJO> moduleList = new ArrayList<>();
+    //ArrayList<GridItem> gridItems;
     Context context;
+    /*
     public RecyclerGridViewAdapter(Context context, ArrayList<GridItem> gridItems){
         this.context = context;
         this.gridItems = gridItems;
+    }*/
+    public RecyclerGridViewAdapter(Context context, ArrayList<ModulePOJO> moduleList){
+        this.context = context;
+        this.moduleList = moduleList;
     }
 
     @Override
@@ -32,13 +39,13 @@ public class RecyclerGridViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolder)holder).setData(gridItems.get(position));
-        ((ViewHolder)holder).bind(gridItems.get(position));
+        ((ViewHolder)holder).setData(moduleList.get(position));
+        ((ViewHolder)holder).bind(moduleList.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return gridItems.size();
+        return moduleList.size();
     }
 }

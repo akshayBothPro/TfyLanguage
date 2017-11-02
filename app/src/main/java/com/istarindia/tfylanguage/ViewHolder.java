@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
+import com.istarindia.tfylanguage.complexobject.ModulePOJO;
 import com.istarindia.tfylanguage.pojo.GridItem;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +31,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public RelativeLayout relativeLayout;
     public Button incompleteLessons;
     Context context;
-    GridItem item;
+    ModulePOJO item;
 
     public ViewHolder(View v, Context context) {
 
@@ -46,26 +47,27 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     }
 
-    public void setData(GridItem item) {
+    public void setData(ModulePOJO item) {
         this.item = item;
         textView.setText(item.getName());
 
-        imageView.setBorderColor(Color.parseColor(item.color));
+        //imageView.setBorderColor(Color.parseColor(item.color));
         Picasso.with(this.context)
-                .load(item.imageUrl)
+                .load(item.getImageURL())
                 .into(imageView);
         textView.setText(item.getName());
 
+        /*
         if (item.inCompleteLessons != 0) {
             incompleteLessons.setText("" + item.inCompleteLessons);
             incompleteLessons.setVisibility(View.VISIBLE);
         } else {
             incompleteLessons.setVisibility(View.INVISIBLE);
-        }
+        }*/
 
     }
 
-    public void bind(final GridItem item) {
+    public void bind(final ModulePOJO item) {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

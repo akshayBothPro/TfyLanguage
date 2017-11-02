@@ -31,7 +31,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         this.assessmentPojos = assessmentPojos;
     }
 
-
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
@@ -55,12 +54,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             fragment = new EndAssessmentFragment();
         }
 
-
-
         return fragment;
     }
-
-
 
     @Override
     public int getCount() {

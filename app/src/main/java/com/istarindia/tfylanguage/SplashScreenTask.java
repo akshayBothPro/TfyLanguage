@@ -110,7 +110,7 @@ public class SplashScreenTask extends AsyncTask<Void, Void, String> {
         if (v != null && !v.equalsIgnoreCase("") && listener != null) {
             listener.OnSplashScreenTaskCompleted();
         } else {*/
-            sharedpreferences.edit().clear().apply();
+            //sharedpreferences.edit().clear().apply();
             Intent i = new Intent(new Intent(context, GridViewActivity.class));
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);

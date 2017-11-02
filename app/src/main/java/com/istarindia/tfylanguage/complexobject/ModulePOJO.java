@@ -8,6 +8,7 @@ import java.util.List;
 public class ModulePOJO implements Comparable<ModulePOJO>,Serializable {
 
 	private Integer id;
+	private Boolean isFirst = false;
 	private String name;
 	private String description;
 	private String status;
@@ -26,7 +27,14 @@ public class ModulePOJO implements Comparable<ModulePOJO>,Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
+	public Boolean getFirst() {
+		return isFirst;
+	}
+	public void setFirst(Boolean first) {
+		isFirst = first;
+	}
+
 	public String getName() {
 		return name;
 	}
