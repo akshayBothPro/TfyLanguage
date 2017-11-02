@@ -16,7 +16,7 @@ import com.istarindia.tfylanguage.complexobject.StudentProfile;
 
 import static android.Manifest.permission.RECEIVE_BOOT_COMPLETED;
 
-public class SplashScreenActivity extends AppCompatActivity implements SplashScreenTask.SplashScreenTaskCallback{
+public class SplashScreenActivity extends AppCompatActivity /* implements SplashScreenTask.SplashScreenTaskCallback*/{
 
     private int user_id;
     private SharedPreferences sharedpreferences;
@@ -25,6 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
 
     private TextView appname;
 
+    /*
     private Runnable startBackgroundTasks = new Runnable() {
         @Override
         public void run() {
@@ -40,9 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
         public void run() {
             OnSplashScreenTaskCompleted();
         }
-    };
-
-
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +57,10 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
         if (studentProfile != null && studentProfile.getId() != null)
             user_id = studentProfile.getId();
 
+        //( context, editor, user_id, sharedpreferences) {
+
+        SplashScreenTask splashScreenTask = new SplashScreenTask(this, editor, user_id, sharedpreferences);
+        splashScreenTask.execute();
         /*
         registerReceiver(new ServiceRestarterBroadcastReceiver(),
                 new IntentFilter(RECEIVE_BOOT_COMPLETED));
@@ -73,9 +76,11 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
     public void onBackPressed() {
     }
 
+    /*
     @Override
     public void OnSplashScreenTaskCompleted() {
         startActivity(new Intent(SplashScreenActivity.this, GridViewActivity.class));
         finish();
     }
+    */
 }

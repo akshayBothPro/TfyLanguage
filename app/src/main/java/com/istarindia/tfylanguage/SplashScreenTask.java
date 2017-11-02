@@ -59,7 +59,7 @@ public class SplashScreenTask extends AsyncTask<Void, Void, String> {
             System.out.println("COMPLEX OBJECT Parse STARTED");
             ComplexObject complexObject = gson.fromJson(response, ComplexObject.class);
             System.out.println("COMPLEX OBJECT PARSE  STOPPED");
-            List<Callable<String>> tasks = new ArrayList<>();
+            //List<Callable<String>> tasks = new ArrayList<>();
 
             editor.putString("COMPLEX_OBJECT_RESPONSE", response);
             editor.putString("DOWNLOAD_RESOURCES", "true");
@@ -106,20 +106,20 @@ public class SplashScreenTask extends AsyncTask<Void, Void, String> {
 
     @Override
     public void onPostExecute(String v) {
+        /*
         if (v != null && !v.equalsIgnoreCase("") && listener != null) {
             listener.OnSplashScreenTaskCompleted();
-        } else {
+        } else {*/
             sharedpreferences.edit().clear().apply();
             Intent i = new Intent(new Intent(context, GridViewActivity.class));
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
-        }
+        //}
     }
 
     public void setListener(SplashScreenTaskCallback listener) {
         this.listener = listener;
     }
-
 
     public interface SplashScreenTaskCallback {
         void OnSplashScreenTaskCompleted();
