@@ -41,7 +41,7 @@ public class GridViewActivity extends AppCompatActivity {
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (position == 1) {
+                if (position == 0) {
                     return 2; // the item in position now takes up 4 spans
                 }
                 return 1;
@@ -63,9 +63,6 @@ public class GridViewActivity extends AppCompatActivity {
             }
         });
         */
-
-
-
 
 
     }

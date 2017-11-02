@@ -62,7 +62,7 @@ public class SplashScreenTask extends AsyncTask<Void, Void, String> {
             //List<Callable<String>> tasks = new ArrayList<>();
 
             editor.putString("COMPLEX_OBJECT_RESPONSE", response);
-            editor.putString("DOWNLOAD_RESOURCES", "true");
+            //editor.putString("DOWNLOAD_RESOURCES", "true");
             editor.commit();
             editor.apply();
 

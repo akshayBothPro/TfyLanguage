@@ -27,16 +27,15 @@ public class RecyclerGridViewAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.grid_item_layout, parent, false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view, context);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ((ViewHolder)holder).setData(gridItems.get(position));
+        ((ViewHolder)holder).bind(gridItems.get(position));
 
     }
-
-
 
     @Override
     public int getItemCount() {

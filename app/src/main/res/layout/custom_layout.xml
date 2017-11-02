@@ -11,6 +11,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         app:siBorderColor="@color/colorPrimary"
+        android:src="@mipmap/talentify_logo_red"
         app:siBorderWidth="25dp" />
     <Button
         android:id="@+id/btn_incomplete_lessons"
