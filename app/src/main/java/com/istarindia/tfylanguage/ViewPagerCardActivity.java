@@ -48,6 +48,7 @@ public class ViewPagerCardActivity extends AppCompatActivity {
         //rootContainer.setBackgroundColor(Color.parseColor(gridItem.color));
         Picasso.with(this)
                 .load(gridItem.getImageURL())
+                .placeholder(R.drawable.ss)
                 .into(courseImg);
     }
 
@@ -59,4 +60,6 @@ public class ViewPagerCardActivity extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(ViewPagerCardActivity.this, GridViewActivity.class));
     }
+
+
 }
