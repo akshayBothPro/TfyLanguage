@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.istarindia.tfylanguage.complexobject.ModulePOJO;
-import com.istarindia.tfylanguage.pojo.GridItem;
 
 import java.util.ArrayList;
 

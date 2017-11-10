@@ -5,23 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.felipecsl.asymmetricgridview.library.Utils;
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.istarindia.tfylanguage.complexobject.ModulePOJO;
-import com.istarindia.tfylanguage.pojo.GridItem;
-import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;

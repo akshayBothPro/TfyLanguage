@@ -2,17 +2,13 @@ package com.istarindia.tfylanguage;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.istarindia.tfylanguage.complexobject.ModulePOJO;
-import com.istarindia.tfylanguage.pojo.GridItem;
 import com.istarindia.tfylanguage.util.ShadowTransformer;
 import com.squareup.picasso.Picasso;
 
@@ -50,6 +46,8 @@ public class ViewPagerCardActivity extends AppCompatActivity {
                 .load(gridItem.getImageURL())
                 .placeholder(R.drawable.ss)
                 .into(courseImg);
+
+        //new ViewHolder.DownloadImagesTask(courseImg, gridItem.getImageURL()).execute();
     }
 
     public  static float dpToPixels(int dp, Context context) {

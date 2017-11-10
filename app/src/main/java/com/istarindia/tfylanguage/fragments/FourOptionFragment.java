@@ -63,7 +63,6 @@ public class FourOptionFragment extends Fragment {
 
         questionText.setText(assessmentPojo.getQuestionPojo().getText());
 
-
         int row = (int )Math.ceil((double)assessmentPojo.getOptionPojo().getOptions().size()/2);
         System.out.println("roww >>>>>>>>>>>>>>>>>>>>>>>>>>>>"+row+" jj "+((double)assessmentPojo.getOptionPojo().getOptions().size()/2));
 
@@ -78,7 +77,6 @@ public class FourOptionFragment extends Fragment {
                 }
                 LayoutInflater option_inflate =  LayoutInflater.from(getContext());
 
-
                 final View option_view = option_inflate .inflate(R.layout.option_inflate, linearLayout, false);
                 Button b = option_view.findViewById(R.id.button);
                 b.setText(option);
@@ -88,8 +86,6 @@ public class FourOptionFragment extends Fragment {
                     optionlayout.addView(linearLayout);
 
                 }
-
-
 
             i++;
         }

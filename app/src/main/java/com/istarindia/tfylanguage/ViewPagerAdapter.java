@@ -25,6 +25,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private Context mContext;
     private ArrayList<AssessmentPojo> assessmentPojos;
+
     public ViewPagerAdapter(Context context,android.support.v4.app.FragmentManager fm,ArrayList<AssessmentPojo> assessmentPojos) {
         super(fm);
         this.mContext = context;
@@ -67,14 +68,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         return null;
     }
 
-
     @Override
     public void destroyItem(View collection, int position, Object o) {
         View view = (View) o;
         ((ViewPager) collection).removeView(view);
         view = null;
     }
-
-
 
 }

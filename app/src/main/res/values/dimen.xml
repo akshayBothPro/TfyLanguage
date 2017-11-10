@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="logosize">60dp</dimen>
 
     <dimen name="iconlogosize">45dp</dimen>
     <dimen name="loginpadding">7dp</dimen>

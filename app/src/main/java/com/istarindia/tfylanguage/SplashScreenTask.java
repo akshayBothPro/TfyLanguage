@@ -54,7 +54,6 @@ public class SplashScreenTask extends AsyncTask<Void, Void, String> {
 
             response = httpUtil.getStringResponse();
 
-
             //Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
             //System.out.println("COMPLEX OBJECT Parse STARTED");
             //ComplexObject complexObject = gson.fromJson(response, ComplexObject.class);
@@ -65,7 +64,6 @@ public class SplashScreenTask extends AsyncTask<Void, Void, String> {
             //editor.putString("DOWNLOAD_RESOURCES", "true");
             editor.commit();
             editor.apply();
-
 
             /*
             if (complexObject != null && complexObject.getTasks() != null && complexObject.getTasks().size() != 0) {

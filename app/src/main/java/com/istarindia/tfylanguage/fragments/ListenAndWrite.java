@@ -107,7 +107,6 @@ public class ListenAndWrite extends Fragment implements View.OnClickListener,Tex
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
-
     @Override
     public void onDestroy() {
         // Don't forget to shutdown tts!

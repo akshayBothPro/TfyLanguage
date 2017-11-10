@@ -15,6 +15,12 @@
     <style name="ButtonStyle" parent="Base.Widget.AppCompat.Button.Colored"> 
         <item name="colorButtonNormal">@color/colorAccent</item> 
     </style>
+    
+    <style name="MyTitleStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+    </style>
 
 
 </resources>

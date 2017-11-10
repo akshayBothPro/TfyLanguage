@@ -55,8 +55,8 @@ public class FlexActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                if(button.getText() != null && !button.getText().toString().equalsIgnoreCase("")) {
-               final int tag_position = (int) v.getTag();
-                Point p = getLocationOnScreen(v);
+                   final int tag_position = (int) v.getTag();
+                   Point p = getLocationOnScreen(v);
                    Rect myViewRect = new Rect();
                    v.getGlobalVisibleRect(myViewRect);
 
@@ -165,8 +165,6 @@ public class FlexActivity extends AppCompatActivity {
         shuttle.startAnimation(animation);
 
     }
-
-
 
     public void topAnimation(float fromX, float toX, float fromY, float toY,  final Button button,final View v,final String text){
         final Animation animation = new TranslateAnimation(fromX,toX,fromY,toY);

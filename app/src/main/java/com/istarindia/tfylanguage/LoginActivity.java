@@ -53,8 +53,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private SharedPreferences sharedpreferences;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

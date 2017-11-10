@@ -90,13 +90,11 @@ public class ViewPagerActivity extends AppCompatActivity {
         AnswerPojo answerPojo = new AnswerPojo();
         OptionPojo optionPojo = new OptionPojo();
 
-
         ArrayList<String> answers = new ArrayList<>();
         answers.add("shah");
         answers.add("rukh");
         answers.add("khan");
         answerPojo.setAnswers(answers);
-
 
         questionPojo.setText("Which bollywood celebrity is known as SRK");
 
@@ -115,8 +113,6 @@ public class ViewPagerActivity extends AppCompatActivity {
 
         assessmentPojos.add(assessmentPojo);
         assessmentPojos.add(assessmentPojo1);
-
-
 
     }
 }

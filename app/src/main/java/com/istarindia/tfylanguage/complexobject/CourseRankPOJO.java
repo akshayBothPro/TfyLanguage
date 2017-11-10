@@ -50,6 +50,5 @@ public class CourseRankPOJO implements Serializable {
 	public void setAllStudentRanks(List<StudentRankPOJO> allStudentRanks) {
 		this.allStudentRanks = allStudentRanks;
 	}
-	
-	
+
 }

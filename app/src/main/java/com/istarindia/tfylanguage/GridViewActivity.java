@@ -12,8 +12,6 @@ import com.google.gson.GsonBuilder;
 import com.istarindia.tfylanguage.complexobject.ComplexObject;
 import com.istarindia.tfylanguage.complexobject.CoursePOJO;
 import com.istarindia.tfylanguage.complexobject.ModulePOJO;
-import com.istarindia.tfylanguage.pojo.GridItem;
-import com.istarindia.tfylanguage.pojo.Lesson;
 
 import java.util.ArrayList;
 
