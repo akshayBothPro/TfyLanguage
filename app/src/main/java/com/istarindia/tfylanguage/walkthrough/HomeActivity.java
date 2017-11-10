@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btn_get_started.setOnClickListener(this);
         btn_member.setOnClickListener(this);
 
-        showWithCustomView();
+        setShowCase();
 
 
 
@@ -50,8 +50,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //.title("If you are a newbie then Get started from here")
-    private void showWithCustomView() {
+    //
+    private void setShowCase() {
         //falseAnim is used to disable animation here
         Animation falseAnim = AnimationUtils.loadAnimation(this, R.anim.false_anim);
 
@@ -64,8 +64,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 .customView(R.layout.custom_view, new OnViewInflateListener() {
                     @Override
                     public void onViewInflated(@NonNull View view) {
-                        TextView xtv = view.findViewById(R.id.description);
+                        TextView xtv = view.findViewById(R.id.descriptionTop);
                         xtv.setText("If you are a newbie then Get started from here");
+                        xtv.setVisibility(View.VISIBLE);
                         Button next = view.findViewById(R.id.closeButton);
                         next.setText("NEXT");
                         next.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +91,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 .customView(R.layout.custom_view, new OnViewInflateListener() {
                     @Override
                     public void onViewInflated(@NonNull View view) {
-                        TextView xtv = view.findViewById(R.id.description);
+                        TextView xtv = view.findViewById(R.id.descriptionTop);
+                        xtv.setVisibility(View.VISIBLE);
                         xtv.setText("Already playing then start from here");
                         Button close = view.findViewById(R.id.closeButton);
                         close.setText("CLOSE");

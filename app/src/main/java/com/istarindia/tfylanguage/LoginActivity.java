@@ -7,7 +7,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +22,8 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -38,18 +43,25 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
+import me.toptas.fancyshowcase.FancyShowCaseQueue;
+import me.toptas.fancyshowcase.FancyShowCaseView;
+import me.toptas.fancyshowcase.FocusShape;
+import me.toptas.fancyshowcase.OnViewInflateListener;
+
 import static com.istarindia.tfylanguage.R.id.rootView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, EditText.OnEditorActionListener{
 
     public AppCompatEditText email, password;
     public Button forgot_password, login_submit, btn_register_instead;
-    public ImageButton iv_show_password;
+    public ImageButton iv_show_password, linkedin, fb, gplus;
     public TextView tv_error_password;
 
     public GifImageView gifImageView;
     public RelativeLayout progresslayout;
     public LinearLayout ll_input_con;
+
+    public FancyShowCaseView emailCase, pswrdCase, redEyeCase, loginCase, forgotCase, linkedinCase, fbCase, gplusCase, registerCase;
 
     private SharedPreferences sharedpreferences;
 
@@ -67,6 +79,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgot_password = (Button) findViewById(R.id.btn_forgot_password);
         iv_show_password = (ImageButton) findViewById(R.id.iv_show_password);
         tv_error_password = (TextView) findViewById(R.id.tv_error_password);
+        linkedin = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
+        fb = (ImageButton) findViewById(R.id.fb);
+        gplus = (ImageButton) findViewById(R.id.btn_signup_google);
         btn_register_instead = (Button) findViewById(R.id.btn_register_instead);
         gifImageView = (GifImageView) findViewById(R.id.gifImageView);
         InputStream inputStream = null;
@@ -85,7 +100,267 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgot_password.setOnClickListener(this);
         btn_register_instead.setOnClickListener(this);
 
+        setShowCase();
+
     }
+
+    private void setShowCase() {
+        //falseAnim is used to disable animation here
+        Animation falseAnim = AnimationUtils.loadAnimation(this, R.anim.false_anim);
+
+        emailCase = new FancyShowCaseView.Builder(this)
+                .focusOn(email)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(email.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionBottom);
+                        xtv.setText("Enter your username here");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                emailCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+
+        pswrdCase = new FancyShowCaseView.Builder(this)
+                .focusOn(password)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(password.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionBottom);
+                        xtv.setText("Enter your password here");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                pswrdCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+
+        redEyeCase = new FancyShowCaseView.Builder(this)
+                .focusOn(iv_show_password)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(iv_show_password.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionBottom);
+                        xtv.setText("Click to see/hide your password here");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                redEyeCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+        loginCase = new FancyShowCaseView.Builder(this)
+                .focusOn(login_submit)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(login_submit.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionBottom);
+                        xtv.setText("Click here to Login");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                loginCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+        forgotCase = new FancyShowCaseView.Builder(this)
+                .focusOn(forgot_password)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(forgot_password.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionBottom);
+                        xtv.setText("Click here if you forgot your password");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                forgotCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+        linkedinCase = new FancyShowCaseView.Builder(this)
+                .focusOn(linkedin)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(linkedin.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionTop);
+                        xtv.setText("Click here to login via linkedin");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                linkedinCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+        gplusCase = new FancyShowCaseView.Builder(this)
+                .focusOn(gplus)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(gplus.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionTop);
+                        xtv.setText("Click here to login via google");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                gplusCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+        fbCase = new FancyShowCaseView.Builder(this)
+                .focusOn(fb)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(fb.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionTop);
+                        xtv.setText("Click here to login via facebook");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("NEXT");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                fbCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+        registerCase = new FancyShowCaseView.Builder(this)
+                .focusOn(btn_register_instead)
+                .focusShape(FocusShape.ROUNDED_RECTANGLE)
+                .roundRectRadius(btn_register_instead.getHeight()/2)
+                .enterAnimation(falseAnim)
+                .exitAnimation(falseAnim)
+                .customView(R.layout.custom_view, new OnViewInflateListener() {
+                    @Override
+                    public void onViewInflated(@NonNull View view) {
+                        TextView xtv = view.findViewById(R.id.descriptionTop);
+                        xtv.setText("Click here to login via facebook");
+                        xtv.setVisibility(View.VISIBLE);
+                        Button next = view.findViewById(R.id.closeButton);
+                        next.setText("CLOSE");
+                        next.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                registerCase.removeView();
+                            }
+                        });
+                    }
+                })
+                .closeOnTouch(false)
+                .backgroundColor(Color.parseColor("#CC333639"))
+                .build();
+
+
+
+        new FancyShowCaseQueue()
+                .add(emailCase)
+                .add(pswrdCase)
+                .add(redEyeCase)
+                .add(loginCase)
+                .add(forgotCase)
+                .add(linkedinCase)
+                .add(gplusCase)
+                .add(fbCase)
+                .add(registerCase)
+                .show();
+
+
+    }
+
 
     private boolean validate() {
         boolean valid = true;
